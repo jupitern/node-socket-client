@@ -2,7 +2,7 @@ var WebSocketClient = require('websocket').client;
 
 var connectionsCount = 0;
 
-for (var i=0; i<10000; ++i) {
+for (var i=0; i<4000; ++i) {
 
     var client = new WebSocketClient();
 
@@ -11,17 +11,18 @@ for (var i=0; i<10000; ++i) {
     });
 
     client.on('connect', function(connection) {
-        console.log('Client Connected');
+        console.log('Client Connected. total = '+ connectionsCount);
         connectionsCount++;
 
         connection.on('error', function(error) {
-            console.log("Connection Error: " + error.toString());
             connectionsCount--;
+            connection.disconnect();
+            console.log("Connection Error: " + error.toString()+' total = '+ connectionsCount);
         });
 
         connection.on('close', function() {
-            console.log('connection Closed');
             connectionsCount--;
+            console.log("Connection Closed: " + error.toString()+' total = '+ connectionsCount);
         });
 
         connection.on('message', function(message) {
