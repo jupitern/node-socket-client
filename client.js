@@ -2,7 +2,7 @@ var WebSocketClient = require('websocket').client;
 
 var connectionsCount = 0;
 
-for (var i=0; i<4000; ++i) {
+for (var i=0; i<6000; ++i) {
 
     var client = new WebSocketClient();
 
