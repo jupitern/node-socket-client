@@ -22,7 +22,7 @@ for (var i=0; i<6000; ++i) {
 
         connection.on('close', function() {
             connectionsCount--;
-            console.log("Connection Closed: " + error.toString()+' total = '+ connectionsCount);
+            console.log("Connection Closed. total = "+ connectionsCount);
         });
 
         connection.on('message', function(message) {
